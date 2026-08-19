@@ -42,22 +42,29 @@ document.getElementById("restartBtn").addEventListener("click", () => {
 document.querySelectorAll(".name-a").forEach((el) => (el.textContent = CONFIG.nameA));
 document.querySelectorAll(".name-b").forEach((el) => (el.textContent = CONFIG.nameB));
 
-/* ---------- Carrusel de polaroids ---------- */
-const polaroids = document.querySelectorAll("#polaroidTrack .polaroid");
+/* ---------- Carrusel de polaroids (scroll horizontal) ---------- */
+const polaroidTrack = document.getElementById("polaroidTrack");
 const dots = document.querySelectorAll("#dots .dot");
-let current = 0;
 
-function showSlide(index) {
-  polaroids.forEach((p, i) => p.classList.toggle("active", i === index));
+function setActiveDot(index) {
   dots.forEach((d, i) => d.classList.toggle("active", i === index));
 }
 
-showSlide(current);
+function currentSlide() {
+  return Math.round(polaroidTrack.scrollLeft / polaroidTrack.clientWidth);
+}
 
-setInterval(() => {
-  current = (current + 1) % polaroids.length;
-  showSlide(current);
-}, 3200);
+polaroidTrack.addEventListener("scroll", () => {
+  window.requestAnimationFrame(() => setActiveDot(currentSlide()));
+});
+
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    polaroidTrack.scrollTo({ left: i * polaroidTrack.clientWidth, behavior: "smooth" });
+  });
+});
+
+setActiveDot(0);
 
 /* ---------- Contador de tiempo juntos ---------- */
 function updateCounter() {
