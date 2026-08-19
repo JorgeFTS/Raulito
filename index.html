@@ -15,8 +15,8 @@
 
   <main class="phone-frame">
 
-    <!-- SECCIÓN 1: Portada -->
-    <section id="cover" class="screen active">
+    <!-- Portada -->
+    <section class="block cover-block">
       <p class="date">14 de febrero de 2022</p>
 
       <div class="polaroid-carousel">
@@ -49,32 +49,23 @@
 
       <div class="divider">〜</div>
 
-      <button id="discoverBtn" class="btn btn-circle">Descúbrelo</button>
+      <div class="envelope-card">
+        <button id="discoverBtn" class="btn btn-circle">Descúbrelo</button>
+        <p class="envelope-hint">Hay algo dentro para ti</p>
+        <p class="envelope-footer">Hecho con amor</p>
+      </div>
     </section>
 
-    <!-- SECCIÓN 2: Mensaje -->
-    <section id="message" class="screen">
-      <figure class="polaroid small">
-        <div class="photo-placeholder photo-3"></div>
-        <span class="photo-heart">♥</span>
-        <figcaption class="names small">Joseraúl <span class="amp">&amp;</span> Melanie</figcaption>
-      </figure>
-
-      <div class="divider">〜</div>
-
+    <!-- Mensaje -->
+    <section class="block reveal" id="messageBlock">
       <div class="card message-card">
         <p>Hoy celebramos todo lo que hemos vivido, pero, sobre todo, todo lo que aún nos queda por vivir.</p>
         <p>Porque si llegar hasta aquí ha sido tan bonito, no puedo imaginar lo increíble que será seguir escribiendo esta historia a tu lado.</p>
       </div>
-
-      <div class="card question-card">
-        <p class="question">¿Te gustaría seguir escribiendo nuestra historia?</p>
-        <button id="yesBtn" class="btn btn-pill">Sí, quiero <span class="heart">♥</span></button>
-      </div>
     </section>
 
-    <!-- SECCIÓN 3: Contador -->
-    <section id="counter" class="screen">
+    <!-- Contador -->
+    <section class="block reveal">
       <div class="card counter-card">
         <p class="counter-title">Han sido los mejores</p>
         <div class="counter-numbers">
@@ -92,18 +83,16 @@
           </div>
         </div>
         <p class="counter-subtitle">de mi vida</p>
-        <button id="continueBtn" class="btn btn-text">Continuar ↓</button>
       </div>
     </section>
 
-    <!-- SECCIÓN 4: Cierre -->
-    <section id="closing" class="screen">
+    <!-- Cierre -->
+    <section class="block reveal">
       <figure class="polaroid final">
         <div class="photo-placeholder photo-4"></div>
         <span class="photo-heart">♥</span>
       </figure>
       <p class="thanks">Gracias por compartir<br>tu vida conmigo</p>
-      <button id="restartBtn" class="btn btn-text">Volver a empezar ↺</button>
     </section>
 
   </main>

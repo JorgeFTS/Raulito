@@ -10,34 +10,6 @@ const CONFIG = {
   nameB: "Melanie",
 };
 
-/* ---------- Navegación entre pantallas ---------- */
-const screens = ["cover", "message", "counter", "closing"];
-
-function goTo(id) {
-  screens.forEach((s) => {
-    document.getElementById(s).classList.toggle("active", s === id);
-  });
-  if (id === "counter") updateCounter();
-}
-
-document.getElementById("discoverBtn").addEventListener("click", () => {
-  burstHearts(6);
-  goTo("message");
-});
-
-document.getElementById("yesBtn").addEventListener("click", () => {
-  burstHearts(10);
-  goTo("counter");
-});
-
-document.getElementById("continueBtn").addEventListener("click", () => {
-  goTo("closing");
-});
-
-document.getElementById("restartBtn").addEventListener("click", () => {
-  goTo("cover");
-});
-
 /* ---------- Nombres dinámicos ---------- */
 document.querySelectorAll(".name-a").forEach((el) => (el.textContent = CONFIG.nameA));
 document.querySelectorAll(".name-b").forEach((el) => (el.textContent = CONFIG.nameB));
@@ -66,6 +38,27 @@ dots.forEach((dot, i) => {
 
 setActiveDot(0);
 
+/* ---------- Botón "Descúbrelo": revela el resto al hacer scroll ---------- */
+document.getElementById("discoverBtn").addEventListener("click", () => {
+  burstHearts(10);
+  document.getElementById("messageBlock").scrollIntoView({ behavior: "smooth" });
+});
+
+/* ---------- Aparición de secciones al hacer scroll ---------- */
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.25 }
+);
+
+document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+
 /* ---------- Contador de tiempo juntos ---------- */
 function updateCounter() {
   const now = new Date();
@@ -89,6 +82,8 @@ function updateCounter() {
   document.getElementById("months").textContent = Math.max(months, 0);
   document.getElementById("days").textContent = Math.max(days, 0);
 }
+
+updateCounter();
 
 /* ---------- Corazones flotantes de fondo ---------- */
 const heartsContainer = document.getElementById("floatingHearts");
