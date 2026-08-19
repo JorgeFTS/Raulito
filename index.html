@@ -15,85 +15,105 @@
 
   <main class="phone-frame">
 
-    <!-- Portada -->
-    <section class="block cover-block">
-      <p class="date">14 de febrero de 2022</p>
-
-      <div class="polaroid-carousel">
-        <div class="polaroid-track" id="polaroidTrack">
-          <figure class="polaroid">
-            <div class="photo-placeholder photo-1"></div>
-            <span class="photo-heart">♥</span>
-          </figure>
-          <figure class="polaroid">
-            <div class="photo-placeholder photo-2"></div>
-            <span class="photo-heart">♥</span>
-          </figure>
-          <figure class="polaroid">
-            <div class="photo-placeholder photo-3"></div>
-            <span class="photo-heart">♥</span>
-          </figure>
-          <figure class="polaroid">
-            <div class="photo-placeholder photo-4"></div>
-            <span class="photo-heart">♥</span>
-          </figure>
-        </div>
-        <figcaption class="names"><span class="name-a">Nombre</span> <span class="amp">&amp;</span> <span class="name-b">Nombre</span></figcaption>
-        <div class="dots" id="dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-      </div>
-
-      <div class="divider">〜</div>
-
-      <div class="envelope-card">
-        <button id="discoverBtn" class="btn btn-circle">Descúbrelo</button>
-        <p class="envelope-hint">Hay algo dentro para ti</p>
-        <p class="envelope-footer">Hecho con amor</p>
-      </div>
+    <!-- Candado de entrada -->
+    <section class="gate" id="gate">
+      <span class="gate-heart">♥</span>
+      <p class="gate-text">Para el amor de mi vida</p>
+      <button id="enterBtn" class="btn btn-pill">Te amo, <span class="name-b">Nombre</span></button>
     </section>
 
-    <!-- Mensaje -->
-    <section class="block reveal" id="messageBlock">
-      <div class="card message-card">
-        <p>Hoy celebramos todo lo que hemos vivido, pero, sobre todo, todo lo que aún nos queda por vivir.</p>
-        <p>Porque si llegar hasta aquí ha sido tan bonito, no puedo imaginar lo increíble que será seguir escribiendo esta historia a tu lado.</p>
-      </div>
-    </section>
+    <div class="content" id="content">
 
-    <!-- Contador -->
-    <section class="block reveal">
-      <div class="card counter-card">
-        <p class="counter-title">Han sido los mejores</p>
-        <div class="counter-numbers">
-          <div class="counter-unit">
-            <span id="years">0</span>
-            <small>años</small>
+      <!-- Portada -->
+      <section class="block cover-block">
+        <p class="date">14 de febrero de 2022</p>
+
+        <div class="polaroid-carousel">
+          <div class="carousel-row">
+            <button class="carousel-arrow prev" id="prevPhoto" aria-label="Foto anterior">‹</button>
+            <div class="polaroid-track" id="polaroidTrack">
+              <figure class="polaroid">
+                <div class="photo-placeholder photo-1"></div>
+                <span class="photo-heart">♥</span>
+              </figure>
+              <figure class="polaroid">
+                <div class="photo-placeholder photo-2"></div>
+                <span class="photo-heart">♥</span>
+              </figure>
+              <figure class="polaroid">
+                <div class="photo-placeholder photo-3"></div>
+                <span class="photo-heart">♥</span>
+              </figure>
+              <figure class="polaroid">
+                <div class="photo-placeholder photo-4"></div>
+                <span class="photo-heart">♥</span>
+              </figure>
+            </div>
+            <button class="carousel-arrow next" id="nextPhoto" aria-label="Foto siguiente">›</button>
           </div>
-          <div class="counter-unit">
-            <span id="months">0</span>
-            <small>meses</small>
-          </div>
-          <div class="counter-unit">
-            <span id="days">0</span>
-            <small>días</small>
+          <figcaption class="names"><span class="name-a">Nombre</span> <span class="amp">&amp;</span> <span class="name-b">Nombre</span></figcaption>
+          <div class="dots" id="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
           </div>
         </div>
-        <p class="counter-subtitle">de mi vida</p>
-      </div>
-    </section>
 
-    <!-- Cierre -->
-    <section class="block reveal">
-      <figure class="polaroid final">
-        <div class="photo-placeholder photo-4"></div>
-        <span class="photo-heart">♥</span>
-      </figure>
-      <p class="thanks">Gracias por compartir<br>tu vida conmigo</p>
-    </section>
+        <div class="divider">〜</div>
+
+        <div class="envelope-card">
+          <button id="discoverBtn" class="btn btn-circle">Descúbrelo</button>
+          <p class="envelope-hint">Hay algo dentro para ti</p>
+          <p class="envelope-footer">Hecho con amor</p>
+        </div>
+      </section>
+
+      <!-- Mensaje -->
+      <section class="block reveal" id="messageBlock">
+        <div class="card message-card">
+          <p>Hoy celebramos todo lo que hemos vivido, pero, sobre todo, todo lo que aún nos queda por vivir.</p>
+          <p>Porque si llegar hasta aquí ha sido tan bonito, no puedo imaginar lo increíble que será seguir escribiendo esta historia a tu lado.</p>
+        </div>
+
+        <div class="card question-card">
+          <p class="question">¿Te gustaría seguir escribiendo nuestra historia?</p>
+          <button id="yesBtn" class="btn btn-pill">Sí, quiero <span class="heart">♥</span></button>
+        </div>
+      </section>
+
+      <!-- Contador -->
+      <section class="block reveal">
+        <div class="card counter-card">
+          <p class="counter-title">Han sido los mejores</p>
+          <div class="counter-numbers">
+            <div class="counter-unit">
+              <span id="years">0</span>
+              <small>años</small>
+            </div>
+            <div class="counter-unit">
+              <span id="months">0</span>
+              <small>meses</small>
+            </div>
+            <div class="counter-unit">
+              <span id="days">0</span>
+              <small>días</small>
+            </div>
+          </div>
+          <p class="counter-subtitle">de mi vida</p>
+        </div>
+      </section>
+
+      <!-- Cierre -->
+      <section class="block reveal">
+        <figure class="polaroid final">
+          <div class="photo-placeholder photo-4"></div>
+          <span class="photo-heart">♥</span>
+        </figure>
+        <p class="thanks">Gracias por compartir<br>tu vida conmigo</p>
+      </section>
+
+    </div>
 
   </main>
 

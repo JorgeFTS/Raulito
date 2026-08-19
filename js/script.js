@@ -14,16 +14,33 @@ const CONFIG = {
 document.querySelectorAll(".name-a").forEach((el) => (el.textContent = CONFIG.nameA));
 document.querySelectorAll(".name-b").forEach((el) => (el.textContent = CONFIG.nameB));
 
-/* ---------- Carrusel de polaroids (scroll horizontal) ---------- */
+/* ---------- Candado de entrada ---------- */
+document.getElementById("enterBtn").addEventListener("click", () => {
+  document.getElementById("gate").classList.add("hidden");
+  document.getElementById("content").classList.add("visible");
+  burstHearts(10);
+});
+
+/* ---------- Carrusel de polaroids (scroll horizontal + flechas) ---------- */
 const polaroidTrack = document.getElementById("polaroidTrack");
+const polaroidSlides = document.querySelectorAll("#polaroidTrack .polaroid");
 const dots = document.querySelectorAll("#dots .dot");
+const prevPhotoBtn = document.getElementById("prevPhoto");
+const nextPhotoBtn = document.getElementById("nextPhoto");
 
 function setActiveDot(index) {
   dots.forEach((d, i) => d.classList.toggle("active", i === index));
+  prevPhotoBtn.disabled = index === 0;
+  nextPhotoBtn.disabled = index === polaroidSlides.length - 1;
 }
 
 function currentSlide() {
   return Math.round(polaroidTrack.scrollLeft / polaroidTrack.clientWidth);
+}
+
+function goToSlide(index) {
+  const clamped = Math.max(0, Math.min(index, polaroidSlides.length - 1));
+  polaroidTrack.scrollTo({ left: clamped * polaroidTrack.clientWidth, behavior: "smooth" });
 }
 
 polaroidTrack.addEventListener("scroll", () => {
@@ -31,10 +48,11 @@ polaroidTrack.addEventListener("scroll", () => {
 });
 
 dots.forEach((dot, i) => {
-  dot.addEventListener("click", () => {
-    polaroidTrack.scrollTo({ left: i * polaroidTrack.clientWidth, behavior: "smooth" });
-  });
+  dot.addEventListener("click", () => goToSlide(i));
 });
+
+prevPhotoBtn.addEventListener("click", () => goToSlide(currentSlide() - 1));
+nextPhotoBtn.addEventListener("click", () => goToSlide(currentSlide() + 1));
 
 setActiveDot(0);
 
@@ -43,6 +61,9 @@ document.getElementById("discoverBtn").addEventListener("click", () => {
   burstHearts(10);
   document.getElementById("messageBlock").scrollIntoView({ behavior: "smooth" });
 });
+
+/* ---------- Botón "Sí, quiero" ---------- */
+document.getElementById("yesBtn").addEventListener("click", () => burstHearts(10));
 
 /* ---------- Aparición de secciones al hacer scroll ---------- */
 const revealObserver = new IntersectionObserver(

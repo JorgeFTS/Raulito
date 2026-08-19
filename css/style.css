@@ -44,6 +44,47 @@ body {
   align-items: center;
 }
 
+/* ---------- Candado de entrada ---------- */
+
+.gate {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.gate.hidden {
+  display: none;
+}
+
+.gate-heart {
+  color: var(--heart);
+  font-size: 2rem;
+}
+
+.gate-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.content {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content.visible {
+  display: flex;
+}
+
 /* ---------- Secciones (bloques apilados en scroll) ---------- */
 
 .block {
@@ -113,6 +154,13 @@ body {
   align-items: center;
 }
 
+.carousel-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .polaroid-track {
   position: relative;
   width: 100%;
@@ -127,6 +175,33 @@ body {
 
 .polaroid-track::-webkit-scrollbar {
   display: none;
+}
+
+.carousel-arrow {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #fffdf8;
+  color: var(--accent-dark);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 14px var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.carousel-arrow:active {
+  transform: scale(0.9);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 .polaroid {
@@ -236,6 +311,21 @@ body {
 
 .message-card p:last-child {
   margin-bottom: 0;
+}
+
+.question-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.question {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--accent-dark);
 }
 
 /* ---------- Sobre (tarjeta de "Descúbrelo") ---------- */
