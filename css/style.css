@@ -503,6 +503,36 @@ body {
   margin: 4px 0 0;
 }
 
+/* ---------- Botón de música ---------- */
+
+.music-toggle {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: radial-gradient(circle at 32% 28%, #d3564a 0%, var(--accent) 45%, var(--accent-dark) 85%, #5c1512 100%);
+  color: #fdece7;
+  font-size: 1.1rem;
+  box-shadow: 0 6px 16px rgba(122, 31, 26, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.music-toggle:active {
+  transform: scale(0.92);
+}
+
+.music-toggle.muted {
+  opacity: 0.5;
+}
+
 /* ---------- Corazones flotantes ---------- */
 
 .floating-hearts {

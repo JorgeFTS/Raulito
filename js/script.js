@@ -19,6 +19,31 @@ document.getElementById("enterBtn").addEventListener("click", () => {
   document.getElementById("gate").classList.add("hidden");
   document.getElementById("content").classList.add("visible");
   burstHearts(10);
+  bgMusic.play().catch(() => {});
+});
+
+/* ---------- Música de fondo ---------- */
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+musicToggle.addEventListener("click", () => {
+  if (bgMusic.paused) {
+    bgMusic.play().catch(() => {});
+  } else {
+    bgMusic.pause();
+  }
+});
+
+bgMusic.addEventListener("play", () => {
+  musicToggle.classList.remove("muted");
+  musicToggle.textContent = "♪";
+  musicToggle.setAttribute("aria-pressed", "false");
+});
+
+bgMusic.addEventListener("pause", () => {
+  musicToggle.classList.add("muted");
+  musicToggle.textContent = "♪̸";
+  musicToggle.setAttribute("aria-pressed", "true");
 });
 
 /* ---------- Carrusel de polaroids (scroll horizontal + flechas) ---------- */
