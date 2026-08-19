@@ -6,7 +6,7 @@
 const CONFIG = {
   // Fecha en la que empezó la relación (año, mes-1, día)
   startDate: new Date(2022, 1, 14),
-  nameA: "Josera'ul",
+  nameA: "Joseraúl",
   nameB: "Melanie",
 };
 
