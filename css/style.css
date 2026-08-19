@@ -72,6 +72,7 @@ body {
 .screen.active {
   display: flex;
   position: relative;
+  width: 100%;
   opacity: 1;
   transform: translateY(0);
 }
@@ -118,7 +119,7 @@ body {
 
 .polaroid-carousel {
   width: 100%;
-  max-width: 260px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -159,13 +160,15 @@ body {
 .polaroid-track .polaroid:nth-child(4) { transform: rotate(2deg); }
 
 .polaroid.small {
-  max-width: 200px;
+  width: 100%;
+  max-width: 240px;
   padding: 10px 10px 26px;
   transform: rotate(-1.5deg);
 }
 
 .polaroid.final {
-  max-width: 240px;
+  width: 100%;
+  max-width: 280px;
   padding: 12px 12px 32px;
   transform: rotate(1.5deg);
 }
@@ -174,11 +177,14 @@ body {
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 2.4rem;
+}
+
+.photo-heart {
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+  color: var(--heart);
+  font-size: 1.4rem;
 }
 
 .photo-1 {
