@@ -1,0 +1,423 @@
+/* ==========================================================
+   Nuestra Historia — página sorpresa de aniversario
+   Paleta cálida crema/dorado inspirada en tarjetas polaroid
+   ========================================================== */
+
+:root {
+  --bg: #f7ecd9;
+  --bg-card: #f4dfae;
+  --bg-card-2: #fbf3e2;
+  --text: #5b4632;
+  --text-soft: #8a7156;
+  --accent: #9c2b24;
+  --accent-dark: #7a1f1a;
+  --heart: #c94b42;
+  --shadow: rgba(91, 70, 50, 0.25);
+  --radius: 18px;
+  --font-display: "Playfair Display", "Georgia", serif;
+  --font-body: "Cormorant Garamond", "Georgia", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 0%, #fbf3e2 0%, var(--bg) 55%, #f0e0c4 100%);
+  font-family: var(--font-body);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+/* Marco tipo teléfono para centrar el contenido verticalmente,
+   igual que se ve la web en el vídeo original */
+.phone-frame {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  padding: 48px 24px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ---------- Secciones / transición entre pantallas ---------- */
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 48px 24px 40px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  text-align: center;
+}
+
+.screen.active {
+  display: flex;
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Tipografía general ---------- */
+
+.date {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.names {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.4rem;
+  margin: 10px 0 0;
+  color: var(--text);
+}
+
+.names.small {
+  font-size: 1.1rem;
+  margin-top: 8px;
+}
+
+.amp {
+  color: var(--accent);
+  font-style: normal;
+  padding: 0 2px;
+}
+
+.divider {
+  color: var(--text-soft);
+  font-size: 1.3rem;
+  opacity: 0.7;
+  margin: 2px 0;
+}
+
+/* ---------- Polaroids ---------- */
+
+.polaroid-carousel {
+  width: 100%;
+  max-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.polaroid-track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+}
+
+.polaroid {
+  background: #fffdf8;
+  padding: 12px 12px 34px;
+  border-radius: 4px;
+  box-shadow: 0 14px 30px var(--shadow);
+  margin: 0;
+  transform: rotate(-2deg);
+}
+
+.polaroid-track .polaroid {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  pointer-events: none;
+}
+
+.polaroid-track .polaroid.active {
+  opacity: 1;
+  position: relative;
+}
+
+.polaroid-track .polaroid:nth-child(2) { transform: rotate(1.5deg); }
+.polaroid-track .polaroid:nth-child(3) { transform: rotate(-1deg); }
+.polaroid-track .polaroid:nth-child(4) { transform: rotate(2deg); }
+
+.polaroid.small {
+  max-width: 200px;
+  padding: 10px 10px 26px;
+  transform: rotate(-1.5deg);
+}
+
+.polaroid.final {
+  max-width: 240px;
+  padding: 12px 12px 32px;
+  transform: rotate(1.5deg);
+}
+
+.photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 2.4rem;
+}
+
+.photo-1 {
+  background: linear-gradient(135deg, #f2b6a0, #e77e6b 55%, #b84a3d);
+  background-image: url("../img/1.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+.photo-2 {
+  background: linear-gradient(135deg, #8fc7d9, #4f8fa8 55%, #2c5f74);
+  background-image: url("../img/2.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+.photo-3 {
+  background: linear-gradient(135deg, #dfb7e6, #a666b0 55%, #6f3f7a);
+  background-image: url("../img/3.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+.photo-4 {
+  background: linear-gradient(135deg, #f6d287, #e2a13d 55%, #b4741d);
+  background-image: url("../img/4.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-soft);
+  opacity: 0.35;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+  transform: scale(1.3);
+  background: var(--accent);
+}
+
+/* ---------- Tarjetas ---------- */
+
+.card {
+  width: 100%;
+  max-width: 300px;
+  background: linear-gradient(160deg, var(--bg-card), var(--bg-card-2));
+  border-radius: var(--radius);
+  padding: 22px 22px 26px;
+  box-shadow: 0 10px 26px var(--shadow);
+}
+
+.message-card p {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.55;
+  margin: 0 0 12px;
+}
+
+.message-card p:last-child {
+  margin-bottom: 0;
+}
+
+.question-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.question {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--accent-dark);
+}
+
+/* ---------- Botones ---------- */
+
+.btn {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn-circle {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #c1443b, var(--accent) 60%, var(--accent-dark));
+  color: #fdece7;
+  font-size: 0.92rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 24px rgba(156, 43, 36, 0.45);
+}
+
+.btn-pill {
+  padding: 12px 30px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #c1443b, var(--accent-dark));
+  color: #fdece7;
+  font-size: 1.05rem;
+  font-style: italic;
+  box-shadow: 0 8px 20px rgba(122, 31, 26, 0.4);
+}
+
+.btn-pill .heart {
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.btn-text {
+  background: none;
+  color: var(--text-soft);
+  font-style: italic;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  opacity: 0.8;
+}
+
+.btn-text:hover {
+  opacity: 1;
+}
+
+/* ---------- Contador ---------- */
+
+.counter-card {
+  max-width: 320px;
+  text-align: center;
+}
+
+.counter-title,
+.counter-subtitle {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.counter-numbers {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin: 14px 0 6px;
+}
+
+.counter-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.counter-unit span {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+  line-height: 1;
+}
+
+.counter-unit small {
+  margin-top: 4px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.counter-card .btn-text {
+  margin-top: 18px;
+}
+
+/* ---------- Cierre ---------- */
+
+.thanks {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--text);
+  line-height: 1.4;
+  margin: 4px 0 0;
+}
+
+/* ---------- Corazones flotantes ---------- */
+
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.heart-particle {
+  position: absolute;
+  bottom: -20px;
+  color: var(--heart);
+  opacity: 0.75;
+  animation: floatUp linear forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(var(--drift, 20px)) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 380px) {
+  .counter-unit span {
+    font-size: 1.9rem;
+  }
+  .counter-numbers {
+    gap: 14px;
+  }
+}
