@@ -19,12 +19,23 @@ document.getElementById("enterBtn").addEventListener("click", () => {
   document.getElementById("gate").classList.add("hidden");
   document.getElementById("content").classList.add("visible");
   burstHearts(10);
-  bgMusic.play().catch(() => {});
 });
 
 /* ---------- Música de fondo ---------- */
 const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
+
+// Los navegadores bloquean el autoplay con sonido sin gesto del usuario.
+// Intentamos reproducir de inmediato; si el navegador lo rechaza, arrancamos
+// en el primer toque/clic/tecla que ocurra en la página (lo más "automático" posible).
+bgMusic.play().catch(() => {
+  const startOnFirstInteraction = () => {
+    bgMusic.play().catch(() => {});
+  };
+  ["click", "touchstart", "keydown"].forEach((ev) =>
+    document.addEventListener(ev, startOnFirstInteraction, { once: true })
+  );
+});
 
 musicToggle.addEventListener("click", () => {
   if (bgMusic.paused) {
