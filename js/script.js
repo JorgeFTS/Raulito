@@ -56,14 +56,24 @@ nextPhotoBtn.addEventListener("click", () => goToSlide(currentSlide() + 1));
 
 setActiveDot(0);
 
-/* ---------- Botón "Descúbrelo": revela el resto al hacer scroll ---------- */
+/* ---------- Revelado paso a paso (sobre → mensaje → fechas) ---------- */
+function openBlock(id) {
+  const el = document.getElementById(id);
+  el.classList.remove("gated");
+  el.classList.add("opening");
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 document.getElementById("discoverBtn").addEventListener("click", () => {
   burstHearts(10);
-  document.getElementById("messageBlock").scrollIntoView({ behavior: "smooth" });
+  openBlock("messageBlock");
 });
 
-/* ---------- Botón "Sí, quiero" ---------- */
-document.getElementById("yesBtn").addEventListener("click", () => burstHearts(10));
+document.getElementById("yesBtn").addEventListener("click", () => {
+  burstHearts(10);
+  openBlock("counterBlock");
+  document.getElementById("closingBlock").classList.remove("gated");
+});
 
 /* ---------- Aparición de secciones al hacer scroll ---------- */
 const revealObserver = new IntersectionObserver(

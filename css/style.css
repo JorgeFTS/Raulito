@@ -111,6 +111,32 @@ body {
   transform: translateY(0);
 }
 
+/* ---------- Bloques que se revelan al abrir el sobre / avanzar ---------- */
+
+.block.gated {
+  display: none;
+}
+
+.block.opening {
+  animation: blockOpen 0.7s ease forwards;
+  transform-origin: top center;
+}
+
+@keyframes blockOpen {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.15) translateY(-14px);
+  }
+  55% {
+    opacity: 1;
+    transform: scaleY(1.04) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+}
+
 /* ---------- Tipografía general ---------- */
 
 .date {
