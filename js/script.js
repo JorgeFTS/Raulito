@@ -107,7 +107,8 @@ document.getElementById("discoverBtn").addEventListener("click", () => {
 
 document.getElementById("yesBtn").addEventListener("click", () => {
   burstHearts(10);
-  openBlock("counterBlock");
+  openBlock("reasonBlock");
+  document.getElementById("counterBlock").classList.remove("gated");
   document.getElementById("closingBlock").classList.remove("gated");
 });
 
