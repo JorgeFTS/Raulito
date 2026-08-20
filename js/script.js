@@ -111,6 +111,12 @@ document.getElementById("yesBtn").addEventListener("click", () => {
   document.getElementById("closingBlock").classList.remove("gated");
 });
 
+document.getElementById("restartBtn").addEventListener("click", () => {
+  document
+    .querySelector(".cover-block")
+    .scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
 /* ---------- Aparición de secciones al hacer scroll ---------- */
 const revealObserver = new IntersectionObserver(
   (entries) => {
